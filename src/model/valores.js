@@ -11,4 +11,4 @@ const pacientSchema = new mongo.Schema(
 
 const pacient = mongo.model("heart_values", pacientSchema);
 
-module.exports = pacient;
+module.exports = pacient; 

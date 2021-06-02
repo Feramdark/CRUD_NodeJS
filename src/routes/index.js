@@ -8,7 +8,7 @@ router.get('/',async(req,res) =>{
     const valores = await valuedb.find();
     console.log(valores);
     res.render('index.ejs',{
-        valores
+        valores 
     });//variable que obtiene los valores de MongoDB
 });
 

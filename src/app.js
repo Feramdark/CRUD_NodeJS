@@ -30,7 +30,7 @@ mongo.connect(url, { useNewUrlParser: true, useUnifiedTopology: true }) // param
   .catch((e) => console.log("Error de conexion", e));
 
 //middleware
-app.use(log('dev'));
+app.use(log('dev')); 
 app.use(bodyParser.urlencoded({extended: false}));
 
 //routes
