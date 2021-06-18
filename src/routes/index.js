@@ -7,22 +7,18 @@ const valuedb = require('../model/valores'); //-> valores que esta extrauen
 router.get('/',async(req,res) =>{
     const valores = await valuedb.find();
     console.log(valores);
-    res.render('index.ejs',{
+    res.json(valores);
+    /*res.render('index.ejs',{ //render que obtiene los valores de MongoDB
         valores 
-    });//variable que obtiene los valores de MongoDB
+    });*/
 });
 
 router.post('/add',async(req,res) =>{
     const valor = new valuedb(req.body);
     await valor.save();
-    res.redirect('/');
+    //res.redirect('/');
+    res.json(valor);
 });
-
-router.delete('/del',async(req,res)=>{
-    const valor = new valuedb(req.body);
-    await valor.deleteOne();
-    res.redirect('/')
-})
 
 module.exports=router;
 

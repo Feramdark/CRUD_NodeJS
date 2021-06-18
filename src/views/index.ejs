@@ -31,9 +31,6 @@
                                 <input type="text" name="nombre" placeholder="Set Name" class="form-control" required>
                             </div>
                             <div class="form-group mb-3">
-                                <input class="form-control" type="text" name="edad" placeholder="Age" required>
-                            </div>
-                            <div class="form-group mb-3">
                                 <input id="my-input" class="form-control" type="text" name="valores" placeholder="Ritmo Cardiaco" required>
                             </div>
                             <button class="btn  btn-success float-end p-1 mb-2" >Send Data</button>
@@ -93,7 +90,6 @@
                         <tr>
                             <th>#</th>
                             <th>Nombre</th>
-                            <th>Edad</th>
                             <th>Valores</th>
                             <th>HOLA</th>
                         </tr>
@@ -103,7 +99,6 @@
                             <tr>
                                 <td><%= i+1  %></td>
                                 <td><%= valores[i].nombre  %></td>
-                                <td><%= valores[i].edad  %></td>
                                 <td><%= valores[i].valores  %></td>
                                 
                                 <td class="col-md-2">

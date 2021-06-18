@@ -4,9 +4,9 @@ const mongo = require("mongoose");
 
 const pacientSchema = new mongo.Schema(
   {
-    nombre: String,
-    edad: Number,
-    valores: Number
+    nombre: {type: String, default: "NULL"},
+    valores: {type:String, default: "NULL"},
+    fecha: {type:Date, default: Date.now}
   });
 
 const pacient = mongo.model("heart_values", pacientSchema);
