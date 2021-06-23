@@ -5,9 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
     <title>PlatForm</title>
 </head>
 <body>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.3.2/dist/chart.min.js"></script>
     <nav class="navbar navbar-dark bg-dark">
         <a href="/" class="navbar-brand "> IOT</a>
     </nav>
@@ -17,7 +19,7 @@
                 <img src="https://i.ibb.co/T0t5byW/icon.png" alt="..." class="rounded-2 border-1">
             </div>
             <div class="col-md-5">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum earum amet quasi dignissimos voluptas.<br> 
+                <p> sectetur adipisicing elit. Rerum earum amet quasi dignissimos voluptas.<br> 
                     Qui voluptatum debitis magnam doloremque omnis sit officia corrupti. <br>
                      A suscipit sunt nihil  <br> iusto reprehenderit itaque?</p>
             </div>
@@ -85,13 +87,13 @@
 
         <div class="row">
             <div class="col border p-3">
-                <table class="table table-bordered table-hover">
+                <table class="table table-bordered table-hover" id="tabla">
                     <thead class="table-dark align-middle ">
                         <tr>
                             <th>#</th>
                             <th>Nombre</th>
                             <th>Valores</th>
-                            <th>HOLA</th>
+
                         </tr>
                     </thead>
                     <tbody>
@@ -100,23 +102,66 @@
                                 <td><%= i+1  %></td>
                                 <td><%= valores[i].nombre  %></td>
                                 <td><%= valores[i].valores  %></td>
-                                
-                                <td class="col-md-2">
-                                    <button class="btn btn-danger" type="button"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
-                                        <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
-                                        <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
-                                      </svg></button>
-                                    <button class="btn btn-warning" type="button"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
-                                        <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
-                                      </svg></button>
-                                </td>
                             </tr>
                         <% } %>
                     </tbody>
                 </table>
             </div>
         </div>
+        <div class="container">
+            <canvas id="chart" width="100" height="100">
+            </canvas>
+        </div>
     </div>
+    <% var contador =0;
+       
+       for(var i=0; i < valores.length; i++){
+           var test= valores[i].nombre;
+           var values = valores[i].valores;
+       }
+    %>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    <script>
+        var getTest = "<%= test %>";
+        var datos = "<%= values %>";
+
+        const ctx = document.getElementById('chart').getContext('2d');
+        const dataSet = document.getElementById('name');
+
+        const myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ["Muestra"],
+        datasets: [{
+            label: 'Medidor de potencia',
+            data: [datos],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+    </script>
 </body>
 </html>
