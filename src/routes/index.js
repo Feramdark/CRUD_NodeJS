@@ -9,7 +9,7 @@ router.get('/',async(req,res) =>{
     console.log(valores);
     //res.json(valores);
     res.render('index.ejs',{ //render que obtiene los valores de MongoDB
-        valores 
+        valores
     });
     
 });
@@ -17,8 +17,8 @@ router.get('/',async(req,res) =>{
 router.post('/add',async(req,res) =>{
     const valor = new valuedb(req.body);
     await valor.save();
-    //res.redirect('/');
-    res.json(valor);
+    res.redirect('/');
+    //res.json(valor);
 });
 
 module.exports=router;
