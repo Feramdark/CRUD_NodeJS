@@ -14,74 +14,13 @@
         <a href="/" class="navbar-brand "> IOT</a>
     </nav>
     <div class="container">
-        <div class="col">
-          <div class="row">
-            <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-indicators">
-                  <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                  <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                  <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                </div>
-                <div class="carousel-inner">
-                  <div class="carousel-item active">
-                    <img src="https://images4.alphacoders.com/600/600528.png" class="d-block w-100" alt="...">
-                    <div class="carousel-caption d-none d-md-block">
-                      <h5>First slide label</h5>
-                      <p>Some representative placeholder content for the first slide.</p>
-                    </div>
-                  </div>
-                  <div class="carousel-item">
-                    <img src="https://images4.alphacoders.com/600/600528.png" class="d-block w-100" alt="...">
-                    <div class="carousel-caption d-none d-md-block">
-                      <h5>Second slide label</h5>
-                      <p>Some representative placeholder content for the second slide.</p>
-                    </div>
-                  </div>
-                  <div class="carousel-item">
-                    <img src="https://images4.alphacoders.com/600/600528.png" class="d-block w-100" alt="...">
-                    <div class="carousel-caption d-none d-md-block">
-                      <h5>Third slide label</h5>
-                      <p>Some representative placeholder content for the third slide.</p>
-                    </div>
-                  </div>
-                </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Next</span>
-                </button>
-              </div>
-        </div>
-        </div>
         <div class="row p-2">
             <div class="col-auto">
                 <img src="https://i.ibb.co/T0t5byW/icon.png" alt="..." class="rounded-2 border-1">
             </div>
             <div class="col-md-5">
-                <p> sectetur adipisicing elit. Rerum earum amet quasi dignissimos voluptas.<br> 
-                    Qui voluptatum debitis magnam doloremque omnis sit officia corrupti. <br>
-                     A suscipit sunt nihil  <br> iusto reprehenderit itaque?</p>
+                <p> En la grafica se muestran los valores recolectados por el Wemos<br> 
             </div>
-            
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-body">
-                        <legend class="display-7">Set a new data</legend>
-                        <form action="/add" method="POST" class="mb-3">
-                            <div class="form-group mb-3" >
-                                <input type="text" name="nombre" placeholder="Set Name" class="form-control" required>
-                            </div>
-                            <div class="form-group mb-3">
-                                <input id="my-input" class="form-control" type="text" name="valores" placeholder="Ritmo Cardiaco" required>
-                            </div>
-                            <button class="btn  btn-success float-end p-1 mb-2" >Send Data</button>
-                        </form>
-                    </div>
-                </div>
-            </div>    
         </div>
 
         <div class="row">
@@ -107,14 +46,17 @@
         const datos = "<%= arreglo %>";
         const dts = "<%= arreglo1 %>";
 
-        const filas = datos.split(',').slice(0);
-        const filas1 = dts.split(',').slice(0);
+        const filas = datos.split(',').slice(0);//nombres
+        const filas1 = dts.split(',').slice(0);//valores
 
         
-        const ctx = document.getElementById('chart')
+        const ctx = document.getElementById('chart');
         const dataSet = document.getElementById('name');
+        createChart();
+        
 
-        const myChart = new Chart(ctx, {
+        function createChart() {
+          const myChart = new Chart(ctx, {
     type: 'line',
     data: {
         labels: filas,
@@ -138,20 +80,14 @@
                 'rgba(255, 159, 64, 1)'
             ],
             borderWidth: 2
-        }]
-    },
-    options: {
-        scales: {
-            y: {
-                beginAtZero: true
-            }
-        }
+        }]}
+      });
     }
-});
-
-    /*function actualizar(){location.reload(true);}
-//Función para actualizar cada 4 segundos(4000 milisegundos)sdf
-  setInterval("actualizar()",1000);*/
+  //function actualizar(){location.reload(true);},
+    setTimeout(function(){
+      window.location.reload(1);
+    },4000);
+  //actualizar();
     </script>
 </body>
 </html>
